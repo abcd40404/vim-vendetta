@@ -236,7 +236,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   endfun
 
   " Vim Highlighting
-  call <SID>X("Normal", s:foreground, s:background, "none")
+  call <SID>X("Normal", s:foreground, "262626", "none")
   call <SID>X("LineNr", s:linenr_fg, s:linenr_bg, "")
   call <SID>X("NonText", s:non_text, "", "")
   call <SID>X("SpecialKey", s:selection, "", "")
@@ -258,6 +258,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("FoldColumn", "", s:background, "")
   "call <SID>X("Cursor", "NONE", s:non_text, "none")
   hi CursorLine guibg=#202020
+  hi CursorLineNR cterm=bold
   hi Cursor guifg=NONE guibg=#555555 gui=none
   if version >= 700
     call <SID>X("CursorLine", "", s:line, "none")
@@ -366,8 +367,12 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   "call <SID>X("htmlScriptTag", s:red,"","")
 
   " Diff Highlighting
-  call <SID>X("diffAdded", s:green, "", "")
-  call <SID>X("diffRemoved", s:red, "", "")
+  "call <SID>X("diffAdded", s:green, "", "")
+  "call <SID>X("diffRemoved", s:red, "", "")
+  " gitgutter
+  highlight GitGutterAdd    guifg=#009900 ctermfg=28 ctermbg=232
+  highlight GitGutterChange guifg=#bbbb00 ctermfg=11 ctermbg=232
+  highlight GitGutterDelete guifg=#ff2222 ctermfg=9 ctermbg=232
 
   " Delete Functions
   delf <SID>X
